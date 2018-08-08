@@ -6,6 +6,12 @@ require '../vendor/autoload.php';
 require '../src/config/db.php';
 
 $app = new \Slim\App;
+
+$app->get('/', function(Request $request, Response $response) {
+    $response->write("welcome to slim");
+    return $response;
+});
+
 $app->get('/hello/{name}', function (Request $request, Response $response) {
     $name = $request->getAttribute('name');
     $response->getBody()->write("Hello, $name");
